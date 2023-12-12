@@ -29,7 +29,6 @@ classifiers = [
 ]
 version = "0.1.0"
 dependencies = [
-    "jdk4py @ git+https://github.com/GorgiAstro/jdk4py/@test-pack-java-runtime",
 ]
 
 [tool.setuptools]
