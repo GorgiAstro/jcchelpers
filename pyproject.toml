@@ -1,7 +1,8 @@
 # pyproject.toml
 [build-system]
 requires = [
-    "setuptools"
+    "setuptools",
+    "install-jdk"
 ]
 build-backend = "setuptools.build_meta"
 
