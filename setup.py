@@ -1,6 +1,7 @@
 import os
 import jdk
 from setuptools import setup
+import sys
 
 JDK_VER = '11' # Don't use JDK8, it has a different directory structure......
 JDK_HOME = None
@@ -16,6 +17,8 @@ except jdk.JdkError:
                 file_stripped = file_stripped.strip("-")
             if file_stripped.startswith(JDK_VER):
                 JDK_HOME = os.path.join(jdk_root_folder, file)
+                if sys.platform == "darwin":
+                    JDK_HOME = os.path.join(JDK_HOME, "Contents", "Home")
                 break
 
 with open(os.path.join("helpers3", "config.py"), "w") as f:
