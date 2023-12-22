@@ -17,12 +17,15 @@ JAVAHOME = None
 JAVAFRAMEWORKS = None
 
 if sys.platform == "darwin":
-
-    if 'JAVA_HOME' in os.environ:
-        _path = os.environ['JAVA_HOME']
-        if os.path.exists(os.path.join(_path, "include", "jni.h")):
-            JAVAHOME = _path
-            print('found JAVAHOME =', JAVAHOME, file=sys.stderr)        
+    try:
+        from helpers3.config import JDK_HOME
+        JAVAHOME = JDK_HOME
+    except:
+        if 'JAVA_HOME' in os.environ:
+            _path = os.environ['JAVA_HOME']
+            if os.path.exists(os.path.join(_path, "include", "jni.h")):
+                JAVAHOME = _path
+                print('found JAVAHOME =', JAVAHOME, file=sys.stderr)
 
     if JAVAHOME is None:
         # figure out where the JDK lives
